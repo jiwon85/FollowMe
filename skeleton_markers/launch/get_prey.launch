@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="openni_launch" type="openni.launch" name="openni--launch"></node>
+
+	<node pkg="openni_tracker" type="openni_tracker" name="openni--tracker"></node>
+		<node pkg="skeleton_markers" type="skeleton_listener" name="openni--skeleton_markers"></node>
+</launch>

@@ -1,0 +1,52 @@
+#include "ros/ros.h"
+#include "geometry_msgs/Twist.h"
+#include <skeleton_markers/VictimFinder.h>
+
+
+
+void callbackForWhenYouGetAMessage(/*msg format*/)
+{
+	geometry_msgs::Twist output;
+	if(msg->hasPrey){
+		if(msg->angle > .5){
+			output.angular.z = -.3;
+		}
+		else if(msg->angle < -.5){
+			output.angular.z = .3;
+		}	
+
+		if(msg->distance > .5){
+			output.linear.x = .3;
+		}
+	}
+	velocity_pub.publish(output);
+}
+
+
+///////////
+in the main, intialize array. assign first xCoor to first array made;
+
+
+const double xPrev;
+const int count;
+//const double[] arr;
+//const double yCoor;
+
+
+
+void victimCallBack(){
+	
+	
+	if(count>9){
+		victimdata.hasPrey = false;
+	}	
+	else{
+		if(transform_torso.getOrigin().X() == xPrev){
+			count++;
+		}
+		else{
+			count = 0;
+			xPrev = transform_torso.getOrigin().X();
+		}
+	}
+			

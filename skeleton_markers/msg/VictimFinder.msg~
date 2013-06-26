@@ -1,0 +1,3 @@
+bool hasPrey		#the user has made the karate pose
+float64 angle
+float64 distance 
