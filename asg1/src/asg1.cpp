@@ -47,7 +47,7 @@ int main(int argc, char **argv){
 	velocity_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
 
 	// subscribe to blob messages and call blobCallback when they are received
-	ros::Subscriber sub = n.subscribe("victimFinder", 1000, victimCallback);   
+	ros::Subscriber sub = n.subscribe("victimDataTopic", 1000, victimCallback);   
 
 	ros::Rate loop_rate(10);
 
